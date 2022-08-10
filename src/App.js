@@ -38,20 +38,17 @@ class App extends Component {
           type="search"
           placeholder="search monsters"
           onChange={(event) => {
+            console.log(event.target.value);
+            // const searchString = event.target.value.toLocaleLowerCase();
+            const filteredMonsters = this.state.monsters.filter((monster) => {
+              return monster.name
+                .toLocaleLowerCase()
+                .includes(event.target.value);
+            });
             // event.target.value
-            this.setState(
-              () => {
-                return {
-                  monsters: this.state.monsters.filter((monster) =>
-                    monster.startsWith(event.target.value)
-                  ),
-                };
-                return { monsters: users };
-              },
-              () => {
-                console.log(this.state);
-              }
-            );
+            this.setState(() => {
+              return { monsters: filteredMonsters };
+            });
           }}
         />
         {this.state.monsters.map((monster) => {
