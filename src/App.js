@@ -243,14 +243,14 @@ class App extends Component {
       monsters: this.monsters,
       searchField: "",
     };
-    console.log(1);
+    // console.log(1);
   }
 
   ////// Deactivated for now until finishing the project locally
   //////////////////////////////////////////////////////////////
 
   // componentDidMount() {
-  //   console.log(3);
+  // console.log(3);
   //   fetch("https://jsonplaceholder.typicode.com/users")
   //     .then((res) => res.json())
   //     .then((users) =>
@@ -259,14 +259,14 @@ class App extends Component {
   //           return { monsters: users };
   //         },
   //         () => {
-  //           console.log(this.state);
+  // console.log(this.state);
   //         }
   //       )
   //     );
   // }
 
   onSearchChange = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     const searchField = event.target.value.toLocaleLowerCase();
 
     // event.target.value
@@ -276,7 +276,7 @@ class App extends Component {
   };
 
   render() {
-    console.log(2);
+    // console.log(2);
 
     const { monsters, searchField } = this.state;
     const { onSearchChange } = this;
