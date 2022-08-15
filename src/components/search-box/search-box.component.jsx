@@ -4,7 +4,7 @@ import "./search-box.styles.css";
 class SearchBox extends Component {
   onClickHanler = (event) => {
     const SearchBox = document.querySelector(".search-box");
-    SearchBox.classList.toggle("active");
+    SearchBox.classList.add("active");
     document.querySelector(".App").addEventListener("click", (e) => {
       SearchBox.classList.remove("active");
     });
