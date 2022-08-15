@@ -244,7 +244,7 @@ class App extends Component {
     // ];
     this.state = {
       // monsters: this.monsters,
-      monsters: [],
+      articles: [],
       searchField: "",
     };
     // console.log(1);
@@ -255,12 +255,18 @@ class App extends Component {
 
   componentDidMount() {
     // console.log(3);
-    fetch("https://jsonplaceholder.typicode.com/users")
+    // const date = new Date().toISOString().toString().split("T")[0];
+    // const url = "https://newsapi.org/v2/everything?q=Apple&from=" +
+    // date +
+    // "&sortBy=popularity&apiKey=11ae9f5c20cc4f24a3a36e2cd0a73374";
+    fetch(
+      "https://newsapi.org/v2/top-headlines?country=us&apiKey=11ae9f5c20cc4f24a3a36e2cd0a73374"
+    )
       .then((res) => res.json())
-      .then((users) =>
+      .then((data) =>
         this.setState(
           () => {
-            return { monsters: users };
+            return { articles: data.articles };
           },
           () => {
             // console.log(this.state);
@@ -282,22 +288,22 @@ class App extends Component {
   render() {
     // console.log(2);
 
-    const { monsters, searchField } = this.state;
+    const { articles, searchField } = this.state;
     const { onSearchChange } = this;
 
-    const filteredMonsters = monsters.filter((monster) => {
-      return monster.name.toLocaleLowerCase().includes(searchField);
+    const filteredArticles = articles.filter((article) => {
+      return article.title.toLocaleLowerCase().includes(searchField);
     });
 
     return (
       <div className="App">
         <h1 className="app-title">Articles board</h1>
         <SearchBox
-          className="monsters-search-box"
+          className="articles-search-box"
           onChangeHandler={onSearchChange}
-          placeholder="search monsters"
+          placeholder="search articles"
         />
-        <CardList monsters={filteredMonsters} />
+        <CardList articles={filteredArticles} />
       </div>
     );
   }
