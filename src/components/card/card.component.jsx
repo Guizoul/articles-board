@@ -4,13 +4,20 @@ import "./card.styles.css";
 
 class Card extends Component {
   render() {
-    const { title, link, description, urlToImage } = this.props.article;
+    const { title, url, description, urlToImage } = this.props.article;
     return (
-      <div className="card-container" key={title}>
-        <img src={urlToImage} alt={`article ${title}`} className="card-img" />
-        <h2>{title}</h2>
+      <div className="card-container" key={title + url}>
+        <img
+          loading="lazy"
+          src={urlToImage}
+          alt={`article ${title}`}
+          className="card-img"
+        />
+        <h3>{title}</h3>
         <p>{description}</p>
-        <a href={`${link}`}>Read more →</a>
+        <a href={`${url}`} target="_blank" rel="noopener noreferrer">
+          Read more →
+        </a>
       </div>
     );
   }

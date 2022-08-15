@@ -2,6 +2,8 @@ import { Component } from "react";
 
 import CardList from "./components/card-list/card-list.component";
 import SearchBox from "./components/search-box/search-box.component";
+import InputText from "./components/text-input/text-input.component";
+import Button from "./components/button/button.component";
 
 import logo from "./logo.svg";
 import "./App.css";
@@ -246,6 +248,7 @@ class App extends Component {
       // monsters: this.monsters,
       articles: [],
       searchField: "",
+      country: "",
     };
     // console.log(1);
   }
@@ -259,6 +262,10 @@ class App extends Component {
     // const url = "https://newsapi.org/v2/everything?q=Apple&from=" +
     // date +
     // "&sortBy=popularity&apiKey=11ae9f5c20cc4f24a3a36e2cd0a73374";
+
+    // const country = document.querySelector(".country-input").value;
+    // console.log(country);
+
     fetch(
       "https://newsapi.org/v2/top-headlines?country=us&apiKey=11ae9f5c20cc4f24a3a36e2cd0a73374"
     )
@@ -285,6 +292,13 @@ class App extends Component {
     });
   };
 
+  onClickHandler = (event) => {
+    const country = document.querySelector(".input").value;
+    if (country === "") {
+      alert("Please enter a valid country abbreviation");
+    }
+  };
+
   render() {
     // console.log(2);
 
@@ -294,10 +308,24 @@ class App extends Component {
     const filteredArticles = articles.filter((article) => {
       return article.title.toLocaleLowerCase().includes(searchField);
     });
-
+    console.log(filteredArticles);
     return (
       <div className="App">
         <h1 className="app-title">Articles board</h1>
+        <InputText
+          type="text"
+          className="input"
+          placeholder="country (ex: us | fr | uk)"
+          defaultValue={"us"}
+        />
+
+        <Button
+          onClickHandler={this.onClickHandler}
+          className="submit-btn"
+          type="submit"
+          value="Submit"
+        />
+
         <SearchBox
           className="articles-search-box"
           onChangeHandler={onSearchChange}
