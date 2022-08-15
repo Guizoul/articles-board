@@ -296,7 +296,6 @@ class App extends Component {
           placeholder="search monsters"
         />
         <CardList monsters={filteredMonsters} />
-        {console.log(document.querySelector(".monsters-search-box"))}
       </div>
     );
   }
