@@ -15,7 +15,12 @@ class Card extends Component {
         />
         <h3>{title}</h3>
         <p>{description}</p>
-        <a href={`${url}`} target="_blank" rel="noopener noreferrer">
+        <a
+          className="link"
+          href={`${url}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Read more →
         </a>
       </div>

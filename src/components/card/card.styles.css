@@ -21,3 +21,15 @@
   height: 200px;
   border-radius: 5px;
 }
+
+.link {
+  cursor: pointer;
+  color: #2050d4;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #4166cc;
+  text-decoration: underline;
+}
