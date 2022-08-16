@@ -5,7 +5,7 @@ import "./select.styles.css";
 class LangSelection extends Component {
   render() {
     return (
-      <form>
+      <div className="select">
         <select
           className={this.props.className}
           onChange={this.props.changeLang}
@@ -15,7 +15,7 @@ class LangSelection extends Component {
           <option value="en">English</option>
           <option value="fr">French</option>
         </select>
-      </form>
+      </div>
     );
   }
 }

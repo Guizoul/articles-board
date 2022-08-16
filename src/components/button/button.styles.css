@@ -12,6 +12,7 @@
   cursor: pointer;
   height: 100%;
   transition: all 0.3s ease-in-out;
+  font-size: 16px;
 }
 
 .submit-btn:hover {

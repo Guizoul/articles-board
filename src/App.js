@@ -12,10 +12,12 @@ import "./App.css";
 const App = () => {
   const [searchField, setSearchField] = useState("");
   const [articles, setArticles] = useState([]);
+  const [filteredArticles, setFilteredArticles] = useState(articles);
   // const [currentLang] = useState("en");
 
   console.log("render");
 
+  // Fetching data from API and updating state
   const fetchAndUpdateState = (currentLang = "en", searchKeyword = "sport") => {
     return fetch(
       `https://api.newscatcherapi.com/v2/search?q=${searchKeyword}&lang=${currentLang}`,
@@ -35,9 +37,18 @@ const App = () => {
       });
   };
 
+  // Resolve the rerendering
   useEffect(() => {
     fetchAndUpdateState();
   }, []);
+
+  useEffect(() => {
+    const newFilteredArticles = articles.filter((article) => {
+      return article.title.toLocaleLowerCase().includes(searchField);
+    });
+
+    setFilteredArticles(newFilteredArticles);
+  }, [articles, searchField]);
 
   // console.log({ searchField });
 
@@ -59,12 +70,10 @@ const App = () => {
 
   const changeLang = async (event) => {
     const searchKeyword = document.querySelector(".input").value;
-    await fetchAndUpdateState(event.target.value, searchKeyword);
+    if (searchKeyword !== "")
+      await fetchAndUpdateState(event.target.value, searchKeyword);
+    else await fetchAndUpdateState(event.target.value);
   };
-
-  const filteredArticles = articles.filter((article) => {
-    return article.title.toLocaleLowerCase().includes(searchField);
-  });
 
   return (
     <div className="App">
@@ -75,7 +84,7 @@ const App = () => {
             type="search"
             className="input"
             placeholder="search keyword"
-            defaultValue={"sport"}
+            defaultValue={""}
           />
 
           <Button
