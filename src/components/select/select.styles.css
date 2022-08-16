@@ -1,6 +1,6 @@
 .lang-selection {
   /* -webkit-appearance: none; */
-  background-color: #0b6d6d;
+  background-color: #008080;
   color: #fff;
   border: none;
   outline: none;
@@ -10,4 +10,8 @@
   margin-bottom: 30px;
   /* margin-right: 150px; */
   cursor: pointer;
+}
+
+.lang-selection:hover {
+  background-color: #0d7272;
 }
