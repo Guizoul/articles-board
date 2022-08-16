@@ -91,7 +91,7 @@ const App = () => {
             onClickHandler={onClickHandler}
             className="submit-btn"
             type="submit"
-            value="Submit"
+            value="Search"
           />
         </div>
         <SearchBox
