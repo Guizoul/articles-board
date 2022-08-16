@@ -1,0 +1,13 @@
+.lang-selection {
+  /* -webkit-appearance: none; */
+  background-color: #0b6d6d;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 16px;
+  width: 120px;
+  line-height: 30px;
+  margin-bottom: 30px;
+  /* margin-right: 150px; */
+  cursor: pointer;
+}

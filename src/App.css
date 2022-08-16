@@ -23,3 +23,10 @@ body {
   color: #0ccac4;
   font-family: "Aboreto";
 }
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 150px;
+}

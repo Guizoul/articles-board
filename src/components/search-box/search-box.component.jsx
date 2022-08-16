@@ -3,7 +3,7 @@ import "./search-box.styles.css";
 
 class SearchBox extends Component {
   onClickHanler = (event) => {
-    const SearchBox = document.querySelector(".search-box");
+    const SearchBox = event.target;
     SearchBox.classList.add("active");
     document.querySelector(".App").addEventListener("click", (e) => {
       SearchBox.classList.remove("active");
@@ -16,6 +16,7 @@ class SearchBox extends Component {
         type="search"
         placeholder={this.props.placeholder}
         onChange={this.props.onChangeHandler}
+        defaultValue={this.props.defaultValue}
         onClick={this.onClickHanler}
       />
     );

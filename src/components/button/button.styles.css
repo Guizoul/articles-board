@@ -8,8 +8,9 @@
   width: 80px;
   line-height: 30px;
   margin-bottom: 30px;
-  margin-right: 150px;
+  /* margin-right: 150px; */
   cursor: pointer;
+  height: 100%;
   transition: all 0.3s ease-in-out;
 }
 
