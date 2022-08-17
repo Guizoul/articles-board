@@ -1,8 +1,6 @@
 import "./card.styles.css";
 
-const Card = ({ article }) => {
-  const { title, link, excerpt, media } = article;
-
+const Card = ({ article: { title, link, excerpt, media } }) => {
   return (
     <div
       className="card-container"
