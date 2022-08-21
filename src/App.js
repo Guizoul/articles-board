@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 
 import CardList from "./components/card-list/card-list.component";
 import SearchBox from "./components/search-box/search-box.component";
 // import InputText from "./components/text-input/text-input.component";
 import Button from "./components/button/button.component";
 import LangSelection from "./components/select/select.component";
+import Footer from "./components/footer/footer.component";
 
 // import logo from "./logo.svg";
 import "./App.css";
@@ -106,6 +107,7 @@ const App = () => {
         />
       </div>
       <CardList articles={filteredArticles} />
+      {/* <Footer className="footer" style={{ position: "fixed" }} /> */}
     </div>
   );
 };

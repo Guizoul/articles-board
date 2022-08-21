@@ -1,11 +1,11 @@
 import "./button.styles.css";
 
-const Button = () => (
+const Button = ({ className, type, value, onClickHandler }) => (
   <input
-    className={this.props.className}
-    type={this.props.type}
-    value={this.props.value}
-    onClick={this.props.onClickHandler}
+    className={className}
+    type={type}
+    value={value}
+    onClick={onClickHandler}
   />
 );
 
