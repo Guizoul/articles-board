@@ -21,6 +21,8 @@ const SearchBox = ({
   />
 );
 
+export default SearchBox;
+
 // import { ChangeEvent, MouseEvent } from "react";
 
 // import "./search-box.styles.css";
@@ -58,4 +60,4 @@ const SearchBox = ({
 //   );
 // };
 
-export default SearchBox;
+// export default SearchBox;

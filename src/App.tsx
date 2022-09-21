@@ -1,48 +1,61 @@
-import React, { Component } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 
-import { CardList } from "./components/card-list/card-list.component";
-import { SearchBox } from "./components/search-box/search-box.component";
+import CardList from "./components/card-list/card-list.component";
+import SearchBox from "./components/search-box/search-box.component";
 
+import { getData } from "./utils/data.utils";
 import "./App.css";
 
-class App extends Component {
-  constructor() {
-    super();
+export type Monster = {
+  id: string;
+  name: string;
+  email: string;
+};
 
-    this.state = {
-      monsters: [],
-      searchField: "",
+const App = () => {
+  const [searchField, setSearchField] = useState("");
+  const [monsters, setMonsters] = useState<Monster[]>([]);
+  const [filteredMonsters, setFilterMonsters] = useState(monsters);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const users = await getData<Monster[]>(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      setMonsters(users);
     };
-  }
 
-  componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((users) => this.setState({ monsters: users }));
-  }
+    fetchUsers();
+  }, []);
 
-  onSearchChange = (event) => {
-    this.setState({ searchField: event.target.value });
+  useEffect(() => {
+    const newFilteredMonsters = monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(searchField);
+    });
+
+    setFilterMonsters(newFilteredMonsters);
+  }, [monsters, searchField]);
+
+  const onSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    const searchFieldString = event.target.value.toLocaleLowerCase();
+    setSearchField(searchFieldString);
   };
 
-  render() {
-    const { monsters, searchField } = this.state;
-    const filteredMonsters = monsters.filter((monster) =>
-      monster.name.toLowerCase().includes(searchField.toLowerCase())
-    );
+  return (
+    <div className="App">
+      <h1 className="app-title">Monsters Rolodex</h1>
 
-    return (
-      <div className="App">
-        <h1>Monsters Rolodex</h1>
-        <SearchBox onSearchChange={this.onSearchChange} />
-        <CardList monsters={filteredMonsters} />
-      </div>
-    );
-  }
-}
+      <SearchBox
+        className="monsters-search-box"
+        onChangeHandler={onSearchChange}
+        placeholder="search monsters"
+      />
+      <CardList monsters={filteredMonsters} />
+    </div>
+  );
+};
 
 export default App;
-
 // import { useState, useEffect } from "react";
 
 // import CardList from "./components/card-list/card-list.component";
